@@ -8,6 +8,8 @@ def timeInWords(h, m):
 
 
 def convertHour(h, m):
+    """Convert hours from int to string.""""
+
     hours = ["", "one", "two", "three", "four", "five", "six", "seven",
              "eight", "nine", "ten", "eleven", "twelve"]
 
@@ -46,12 +48,17 @@ def convertMinutes_x(m):
 
         if uni != 0:
             minutes = minutes + " " + units[uni] + " minutes"
+        else:
+            minutes = minutes + " minutes"
 
     elif decimal == 1:
         minutes = decimals[uni] + " minutes"
 
     else:
-        minutes = units[uni] + " minutes"
+        if units[uni] == "one":
+            minutes = units[uni] + " minute"
+        else:
+            minutes = units[uni] + " minutes"
 
     return minutes
 
@@ -71,7 +78,3 @@ def responseStructure(hour, minutes, h, m):
             return "quarter" + " to " + hour
         else:
             return minutes + " to " + hour
-
-
-print(timeInWords(1, 1))
-#print(2%10)
