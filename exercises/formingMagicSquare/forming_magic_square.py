@@ -3,25 +3,23 @@ def forming_magic_square(s):
     dim = len(s)
 
     count = 0
-    saveResult = []
+    saveResultLine = []
+    saveResultCoumn = []
     for i in range(dim):
-        t = 0
+        t1 = 0
+        t2 = 0
         for j in range(dim):
-            t += s[i][j]
-        saveResult.append(t)
+            t1 += s[i][j]
+            t2 += s[j][i]
+        saveResultLine.append(t1)
+        saveResultCoumn.append(t2)
 
     t = 0
     for i in range(dim):
         t += s[i][i]
 
+    saveResult = []
     saveResult.append(t)
-
-    for i in range(dim):
-        t = 0
-        for j in range(dim):
-            t += s[j][i]
-
-        saveResult.append(t)
 
     return saveResult
 
