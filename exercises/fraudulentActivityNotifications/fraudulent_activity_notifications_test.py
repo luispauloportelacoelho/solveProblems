@@ -3,7 +3,9 @@ from fraudulent_activity_notifications import activityNotifications, calculateMe
 
 
 class Test(TestCase):
-    
+    def test_input0(self):
+        self.assertEqual(activityNotifications([2, 3, 4, 2, 3, 6, 8, 4, 5], 5),\
+                         2)
 
     def test_input1(self):
         self.assertEqual(activityNotifications([1, 2, 3, 4, 4], 4), 0)
