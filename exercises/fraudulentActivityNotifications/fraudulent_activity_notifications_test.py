@@ -20,6 +20,5 @@ class Test(TestCase):
         self.assertEqual(calculateMedian([1, 2, 3, 4, 5, 6, 8, 9], True, 4), 4.5)
 
 
-
 if __name__ == '__main__':
     main()
