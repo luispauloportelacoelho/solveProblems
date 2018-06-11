@@ -1,5 +1,6 @@
 from unittest import TestCase, main
-from fraudulent_activity_notifications import activityNotifications, calculateMedian
+from fraudulent_activity_notifications import activityNotifications
+from fraudulent_activity_notifications import calculateMedian                                              calculateMedian
 
 
 class Test(TestCase):
