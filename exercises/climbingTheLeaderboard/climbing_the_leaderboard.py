@@ -6,26 +6,28 @@ def climbingLeaderboard(scores, alice):
 
     numberGames = len(alice)
 
-    countIteration = 0
+    for x in range(numberGames):
 
-    for x in xrange(0, numberGames):
-        for y in xrange (0, numberScores):
-            countIteration += 1
-            print(countIteration)
-            if alice[x] == scores[y]:
-                playerPosition.append(allPositions[y])
-                break
-            elif alice[x] > scores[y]:
-                if y == 0:
-                    playerPosition.append(1)
-                    break
-                else:
-                    playerPosition.append(allPositions[y])
-                    break
-            elif y == numberScores - 1:
-                playerPosition.append(numberScores-1)
-                break
+        if alice[x] in scores:
+            value_index = scores.index(alice[x])
+            playerPosition.append(allPositions[value_index])
+        else:
+            if alice[x] < scores[-1]:
+                playerPosition.append(allPositions[-1] + 1)
+            elif alice[x] > scores[0]:
+                playerPosition.append(1)
+            else:
+                vector = [i for i in scores if i > alice[x]]
+                sizeVector = len(vector)
+                playerPosition.append(allPositions[sizeVector])
 
+                '''for y in range(numberScores):
+
+                    if alice[x] > scores[y]:
+                        playerPosition.append(allPositions[y])
+                        break'''
+
+    #print([i for i in scores if i >= 60])
 
     return playerPosition
 
