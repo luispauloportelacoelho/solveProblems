@@ -6,8 +6,12 @@ def climbingLeaderboard(scores, alice):
 
     numberGames = len(alice)
 
-    for x in range(0, numberGames):
-        for y in range (0, numberScores):
+    countIteration = 0
+
+    for x in xrange(0, numberGames):
+        for y in xrange (0, numberScores):
+            countIteration += 1
+            print(countIteration)
             if alice[x] == scores[y]:
                 playerPosition.append(allPositions[y])
                 break
@@ -20,7 +24,7 @@ def climbingLeaderboard(scores, alice):
                     break
             elif y == numberScores - 1:
                 playerPosition.append(numberScores-1)
-
+                break
 
 
     return playerPosition
