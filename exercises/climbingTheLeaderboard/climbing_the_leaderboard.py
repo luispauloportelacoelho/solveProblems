@@ -11,4 +11,4 @@ def climbingLeaderboard(scores, alice):
             sizeLeaderboard -= 1
         result.append(sizeLeaderboard+1)
 
-    return result  
+    return result
