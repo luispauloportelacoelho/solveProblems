@@ -1,5 +1,5 @@
 def climbingLeaderboard(scores, alice):
-
+    """Climbing the leadboard."""
     allPositions, numberScores = classify_scores(scores)
 
     playerPosition = []
@@ -21,18 +21,12 @@ def climbingLeaderboard(scores, alice):
                 sizeVector = len(vector)
                 playerPosition.append(allPositions[sizeVector])
 
-                '''for y in range(numberScores):
-
-                    if alice[x] > scores[y]:
-                        playerPosition.append(allPositions[y])
-                        break'''
-
-    #print([i for i in scores if i >= 60])
-
     return playerPosition
 
 
 def classify_scores(scores):
+    """Give a classification for all scores."""
+
     numberScores = len(scores)
 
     position = [1]
@@ -44,8 +38,3 @@ def classify_scores(scores):
             position.append(position[x-1] + 1)
 
     return position, numberScores
-
-
-print(classify_scores([100, 100, 50, 40, 40, 30]))
-print(climbingLeaderboard([100, 100, 50, 40, 40, 20, 10],
-                                     [5, 25, 50, 120]))
