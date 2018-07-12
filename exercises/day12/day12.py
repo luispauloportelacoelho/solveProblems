@@ -21,22 +21,28 @@ class Student(Person):
         Person.__init__(self, firstName, lastName, idNumber)
         self.scores = scores
 
+    #   Function Name: calculate
+    #   Return: A character denoting the grade.
+    #
+    # Write your function here
     def calculate(self):
-        sizeScores = len(scores)
-        calculateAverage = sum(scores) / sizeScores
+        sizeScores = len(self.scores)
+        calculateAverage = sum(self.scores) / sizeScores
 
         if calculateAverage >= 90 and calculateAverage <= 100:
-            return "O"
+            message = 'O'
         elif calculateAverage >= 80 and calculateAverage < 90:
-            return "E"
+            message = 'E'
         elif calculateAverage >= 70 and calculateAverage < 80:
-            return "A"
+            message = 'A'
         elif calculateAverage >= 55 and calculateAverage < 70:
-            return "P"
+            message = 'P'
         elif calculateAverage >= 40 and calculateAverage < 55:
-            return "D"
+            message = 'D'
         elif calculateAverage < 40:
-            return "T"
+            message = 'T'
+
+        return message
 
 
 
