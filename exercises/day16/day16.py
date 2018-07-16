@@ -2,7 +2,9 @@
 
 import sys
 
-
 S = input().strip()
 
-if int(x=0)
+try:
+    print(int(S))
+except Exception:
+    print("Bad String")
