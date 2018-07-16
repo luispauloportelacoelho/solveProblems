@@ -9,4 +9,7 @@ nSet = set(N)
 differenceMSet = mSet.difference(nSet)
 differenceNSet = nSet.difference(mSet)
 
-unionDifferences = differenceMSet.union(differenceNSet)
+unionDifferences = sorted(differenceMSet.union(differenceNSet))
+
+for x in unionDifferences:
+    print(x)
