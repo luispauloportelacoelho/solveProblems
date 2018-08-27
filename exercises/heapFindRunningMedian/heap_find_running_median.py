@@ -21,45 +21,36 @@ def runningMedian(a):
             minHeapSize += 1
         else:
             if a[x] < calc:
-                heapq.heappush(maxHeap, -1 * a[x])
                 maxHeapSize += 1
             else:
-                heapq.heappush(minHeap, a[x])
                 minHeapSize += 1
 
             differenceHeapSize = abs(minHeapSize - maxHeapSize)
 
-            print("======")
-            print(differenceHeapSize)
-
             if differenceHeapSize == 2 and minHeapSize < maxHeapSize:
-                heapq.heappush(minHeap, -1 * heapq.heappop(maxHeap))
+                heapq.heappush(minHeap, -1 * heapq.heapreplace(maxHeap, -1 * a[x]))
 
                 maxHeapSize -= 1
                 minHeapSize += 1
 
             elif differenceHeapSize == 2 and minHeapSize > maxHeapSize:
-                heapq.heappush(maxHeap, -1 * heapq.heappop(minHeap))
+                heapq.heappush(maxHeap, -1 * heapq.heapreplace(minHeap, a[x]))
 
                 maxHeapSize += 1
                 minHeapSize -= 1
+            elif a[x] < calc:
+                heapq.heappush(maxHeap, -1 * a[x])
+            else:
+                heapq.heappush(minHeap, a[x])
 
             differenceHeapSize = abs(minHeapSize - maxHeapSize)
+
             if differenceHeapSize == 0:
                 calc = (-1 * maxHeap[0] + minHeap[0]) / 2
-                print("----------------")
-                print(-1 * maxHeap[0])
-                print(minHeap[0])
             elif minHeapSize > maxHeapSize:
-                print("^^^^^^^^^^^^^^^^")
                 calc = minHeap[0]
             elif minHeapSize < maxHeapSize:
-                print("~~~~~~~~~~~~~~~~")
                 calc = -1 * maxHeap[0]
-
-        print(calc)
-        print(minHeap)
-        print(maxHeap)
 
         medianArr.append(calc)
 
