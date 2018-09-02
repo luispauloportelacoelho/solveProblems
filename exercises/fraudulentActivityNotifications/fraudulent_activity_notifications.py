@@ -1,52 +1,91 @@
 import heapq
 
+# Complete the activityNotifications function below.
 def activityNotifications(expenditure, d):
-    numberAlerts = 0
 
-    if (d // 2 == 0):
-        typeOfMedian = True
-        position = d / 2
+    choose = int(d / 2)
+
+    lenExpenditure = len(expenditure)
+
+    arrayMedian = expenditure[0:d]
+    arrayMedian.sort()
+
+    minHeap = arrayMedian[choose:d]
+    minHeapSize = len(minHeap)
+    maxHeap = arrayMedian[0:choose]
+    maxHeap = [x * (-1) for x in maxHeap]
+    maxHeapSize = len(maxHeap)
+
+    heapq.heapify(minHeap)
+    heapq.heapify(maxHeap)
+
+    if minHeapSize == maxHeapSize:
+        firstMedian = (minHeap[0] - maxHeap[0]) / 2
     else:
-        typeOfMedian = False
-        position = (d / 2) - 0.5
+        firstMedian = minHeap[0]
 
-    size = len(expenditure) - 1
+    notifications = 0
+    countCycles = 0
 
-    for x in range(d, size):
-        median = calculateMedian(expenditure[(x - d):(x - 1)], typeOfMedian, int(position))
+    if expenditure[d] >= 2 * firstMedian:
+        notifications += 1
 
-        if expenditure[x] >= (median * 2):
-            numberAlerts += 1
+    for x in range(d + 1, lenExpenditure):
+        valueToRemove = expenditure[countCycles]
+        countCycles += 1
+        if minHeap[0] > valueToRemove:
 
-    return numberAlerts
+            i = maxHeap.index(-1 * valueToRemove)
 
+            maxHeap[i] = maxHeap[-1]
 
-def calculateMedian(subArray, typeOfMedian, position):
+            maxHeap.pop()
+            maxHeapSize -= 1
 
-    #sortSubArray = sorted(subArray)
-    sortSubArray = sortHeap(subArray)
-    print(sortSubArray)
+            if i < len(maxHeap):
+                heapq._siftup(maxHeap, i)
+                heapq._siftdown(maxHeap, 0, i)
+        else:
+            i = minHeap.index(valueToRemove)
 
-    if typeOfMedian:
-        return ((sortSubArray[position] + sortSubArray[position - 1]) / 2)
-    else:
-        return sortSubArray[position]
+            minHeap[i] = minHeap[-1]
 
+            minHeap.pop()
+            minHeapSize -= 1
 
-def sortHeap(subArray):
+            if i < len(minHeap):
+                heapq._siftup(minHeap, i)
+                heapq._siftdown(minHeap, 0, i)
 
-    sizeA = len(subArray)
+        if minHeap[0] > expenditure[x-1]:
+            heapq.heappush(maxHeap, -1 * expenditure[x-1])
+            maxHeapSize += 1
+        else:
+            heapq.heappush(minHeap, expenditure[x-1])
+            minHeapSize += 1
 
-    heap = []
-    for x in range(0, sizeA):
-        heapq.heappush(heap, subArray[x])
+        #print('before update')
+        #print(minHeap)
+        #print(minHeapSize)
+        #print(maxHeap)
+        #print(maxHeapSize)
+        if abs(minHeapSize - maxHeapSize) >= 2:
+            if minHeapSize > maxHeapSize:
+                #heapq.heappush(maxHeap, -1 * heapq.heapreplace(minHeap, a[x]))
+                heapq.heappush(maxHeap, -1 * heapq.heappop(minHeap))
+                minHeapSize -= 1
+                maxHeapSize += 1
+            else:
+                #heapq.heappush(minHeap, -1 * heapq.heapreplace(maxHeap, -1 * a[x]))
+                heapq.heappush(minHeap, -1 * heapq.heappop(maxHeap))
+                minHeapSize += 1
+                maxHeapSize -= 1
+        #print('after update')
+        #print(minHeap)
+        #print(maxHeap)
 
-    heapq.heapify(heap)
-    print(subArray)
-    print(heap)
-    print(heap[1])
+        if ((d % 2) == 0 and (expenditure[d] >= (minHeap[0] - maxHeap[0]))) or expenditure[d] >= 2 * minHeap[0]:
+            notifications += 1
+    print(notifications)
 
-
-    return heap
-
-sortHeap([20, 3, 4, 2, 3, 6, 8, 4, 5])
+    return notifications
