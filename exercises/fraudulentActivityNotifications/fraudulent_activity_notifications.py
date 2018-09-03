@@ -86,6 +86,7 @@ def activityNotifications(expenditure, d):
 
         if ((d % 2) == 0 and (expenditure[d] >= (minHeap[0] - maxHeap[0]))) or expenditure[d] >= 2 * minHeap[0]:
             notifications += 1
+
     print(notifications)
 
     return notifications
