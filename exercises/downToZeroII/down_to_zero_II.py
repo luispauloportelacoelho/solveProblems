@@ -1,21 +1,21 @@
 def downToZero(n):
 
-    count = n
     moves = 0
-    mul = []
+    arr = []
 
-    for x in range(1, n//2+1):
+    if n % 2 != 0:
+        return n
+    else:
+        for x in range(1, n // 2 + 1):
+            if n % x == 0:
+                arr.append(x)
+                moves += 1
+        return arr[moves - 1] + 1
 
-        if n % x == 0:
-            mul.append(x)
-
-    #for x in range(len(mul)):
-
-
-
-    while count > 0:
-
-        count -= 1
-        moves += 1
-
-    return moves
+def calculateMax(a, b):
+    if a > b:
+        return a
+    elif a < b:
+        return b
+    else:
+        return a
