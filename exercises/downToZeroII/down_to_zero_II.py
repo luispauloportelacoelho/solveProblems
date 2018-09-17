@@ -1,21 +1,30 @@
+from math import sqrt
 def downToZero(n):
 
-    moves = 0
-    arr = []
+    memoize = set()
+    count = 0
 
-    if n % 2 != 0:
-        return n
-    else:
-        for x in range(1, n // 2 + 1):
-            if n % x == 0:
-                arr.append(x)
-                moves += 1
-        return arr[moves - 1] + 1
+    queue = []
+    queue.append((n, count))
 
-def calculateMax(a, b):
-    if a > b:
-        return a
-    elif a < b:
-        return b
-    else:
-        return a
+    while len(queue):
+        data, count = queue.pop(0)
+        if data <= 1:
+            if data == 1:
+                count += 1
+            break
+
+        if data - 1 not in memoize:
+            memoize.add(data - 1)
+            queue.append((data - 1, count + 1))
+
+        sqr = int(sqrt(data))
+
+        for i in range(sqr, 1, -1):
+            if data % i == 0:
+                div = max(int(data/i), i)
+                if div not in memoize:
+                    memoize.add(div)
+                    queue.append((div, count + 1))
+
+    return count
