@@ -15,28 +15,20 @@ def truckTour(petrolpumps):
     nextStop = 0
     cycle = 0
 
-    while stops != (numberOfPoint - 1):
+    while stops != (numberOfPoint):
 
-        if stops == 0:
-            dieselInTank += circular_queue[stops][0]
-            nextStop = circular_queue[stops][1]
-            stops += 1
-            if nextStop > dieselInTank:
-                dieselInTank = 0
-                nextStop = 0
-                stops = 0
-                circular_queue.rotate(-1)
-                cycle += 1
-        else:
-            dieselInTank += circular_queue[stops][0]
-            dieselInTank -= nextStop
-            nextStop = circular_queue[stops][1]
-            stops += 1
-            if nextStop > dieselInTank:
-                dieselInTank = 0
-                nextStop = 0
-                stops = 0
-                circular_queue.rotate(-1)
-                cycle += 1
+        dieselInTank += circular_queue[stops][0]
+
+        dieselInTank -= nextStop
+
+        nextStop = circular_queue[stops][1]
+        stops += 1
+
+        if nextStop > dieselInTank:
+            dieselInTank = 0
+            nextStop = 0
+            stops = 0
+            circular_queue.rotate(-1)
+            cycle += 1
 
     return cycle
