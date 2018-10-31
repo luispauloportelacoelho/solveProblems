@@ -1,4 +1,4 @@
-def breakingRecords(scores):
+def breakingRecords(scores: list) -> list:
     minScore = 0
     maxScore = 0
     countMinScore = 0

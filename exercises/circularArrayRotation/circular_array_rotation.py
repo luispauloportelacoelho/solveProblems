@@ -1,4 +1,4 @@
-def circularArrayRotation(a, k, queries):
+def circularArrayRotation(a: list, k: int, queries: list) -> list:
 
     lenA = len(a)
 

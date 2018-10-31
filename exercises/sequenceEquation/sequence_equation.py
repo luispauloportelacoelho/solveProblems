@@ -1,4 +1,4 @@
-def permutationEquation(p):
+def permutationEquation(p: list) -> list:
 
     lenP = len(p)
 
