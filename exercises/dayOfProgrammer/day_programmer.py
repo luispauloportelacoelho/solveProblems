@@ -8,10 +8,10 @@ def dayProgrammer(year: int) -> str:
     elif year < 1918:
         yearType = validateLeapYearJulian(year)
 
-    if yearType is True:
+    if yearType:
         response = '12.09.' + str(year)
 
-    elif yearType is False:
+    elif not yearType:
         response = '13.09.' + str(year)
 
     return response

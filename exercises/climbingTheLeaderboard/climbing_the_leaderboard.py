@@ -1,7 +1,7 @@
 def climbingLeaderboard(scores, alice):
     """Climbing the leadboard."""
 
-    leaderboard = sorted(set(scores), reverse = True)
+    leaderboard = sorted(set(scores), reverse=True)
     sizeLeaderboard = len(leaderboard)
 
     result = []
