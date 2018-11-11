@@ -1,5 +1,6 @@
 from collections import deque
 
+
 def truckTour(petrolpumps):
     #
     # Write your code here.
