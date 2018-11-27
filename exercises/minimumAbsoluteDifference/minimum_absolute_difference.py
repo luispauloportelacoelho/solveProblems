@@ -3,16 +3,14 @@ def minimumAbsoluteDifference(arr: list) -> int:
 
     min_value = 0
 
-    for x in range(0, len_arr):
-        for y in range(0, len_arr):
+    arr = sorted(arr)
 
-            if x == 0 and y == 1:
-                min_value = abs(arr[x] - arr[y])
+    for x in range(1, len_arr):
+        difference = abs(arr[x-1] - arr[x])
 
-            if x != y:
-                difference = abs(arr[x] - arr[y])
-
-                if difference < min_value:
-                    min_value = difference
+        if x == 1:
+            min_value = difference
+        elif x != 1 and difference < min_value:
+            min_value = difference
 
     return min_value
