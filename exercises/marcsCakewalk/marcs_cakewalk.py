@@ -7,6 +7,3 @@ def marcsCakewalk(calorie: list) -> int:
         min_miles += calorie[x] * (2**x)
 
     return min_miles
-
-
-print(marcsCakewalk([1, 3, 2]))
