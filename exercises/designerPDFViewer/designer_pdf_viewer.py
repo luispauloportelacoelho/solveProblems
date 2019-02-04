@@ -1,4 +1,4 @@
-def designerPdfViewer(h: list, word: str):
+def designerPdfViewer(h: list, word: str) -> int:
 
     word_array = list(word)
     word_int_array = []
