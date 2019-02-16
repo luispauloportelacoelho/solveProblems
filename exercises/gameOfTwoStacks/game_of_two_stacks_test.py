@@ -1,5 +1,5 @@
 from unittest import TestCase, main
-from game_of_two_stacks_2 import twoStacks
+from game_of_two_stacks import twoStacks
 
 class Test(TestCase):
 
