@@ -10,7 +10,7 @@ def fibonacciModified(t1, t2, n):
             elif n == 2:
                 return t2
             else:
-                cache[n] = calculate(n - 2) + calculate(n - 1)*calculate(n - 1)
+                cache[n] = calculate(n - 2) + calculate(n - 1) * calculate(n - 1)
                 return cache[n]
 
     return calculate(n)
