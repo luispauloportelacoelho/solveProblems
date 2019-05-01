@@ -19,7 +19,7 @@ def acmTeam(topic):
         pair_value = 0
 
         for x in range(list1_size):
-            if (list1[x] == '1') or (list2[x] == '1'):
+            if list1[x] == '1' or list2[x] == '1':
                 pair_value += 1
 
         if pair_value == max_value:
