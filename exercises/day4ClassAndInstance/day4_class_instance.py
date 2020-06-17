@@ -7,7 +7,7 @@ class Person:
 
 
     def amIOld(self):
-        # Do some computations in here and print out the correct statement to the console
+        # Do some computations in here and print out the correct statement to the console.
         if self.age < 13:
             message = 'You are young.'
         elif self.age >= 18:
